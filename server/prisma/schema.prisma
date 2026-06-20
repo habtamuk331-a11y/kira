@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Sale {
+  id        String   @id @default(cuid())
+  type      String   // "cash" or "mobile_banking"
+  amount    Float
+  createdAt DateTime @default(now())
+}
+
+model Expense {
+  id        String   @id @default(cuid())
+  reason    String
+  amount    Float
+  createdAt DateTime @default(now())
+}
+
+model Credit {
+  id        String   @id @default(cuid())
+  ownerName String
+  amount    Float
+  isPaid    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
