@@ -1,9 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import bcrypt from 'bcryptjs';
-import { authMiddleware, generateToken, AuthRequest } from './middleware/auth';
-import { prisma } from './prisma/client';
-
+import { authMiddleware, generateToken, AuthRequest } from './middleware/auth.js';
+import { prisma } from './prisma/client.js';
 const app = express();
 
 // Middleware
